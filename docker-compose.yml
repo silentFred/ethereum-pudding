@@ -1,0 +1,43 @@
+version: '3.8'
+services:
+
+  lodestar:
+    image: chainsafe/lodestar:v1.17.0
+    command: >
+      beacon
+      --dataDir="/opt/ethereum/lodestar-beacondata-mainnet"
+      --network="mainnet"
+      --rest.namespace="*"
+      --checkpointSyncUrl="https://sync-mainnet.beaconcha.in"
+      --execution.engineMock
+      --eth1 false
+      --rest.address="0.0.0.0"
+      --rest.swaggerUI
+      --chain.archiveBlobEpochs 3150
+    volumes:
+      - C:\Users\cmptr\ethereum:/opt/ethereum
+    ports:
+      - "9596:9596"
+    restart: unless-stopped
+
+  redis-stack:
+    image: redis/redis-stack:latest
+    ports:
+      - "6379:6379" # Redis server
+      - "8001:8001" # Redis Stack UI
+    restart: unless-stopped
+
+  pudding:
+    build: ./
+    environment:
+      - RUN_ENV=docker
+    ports:
+      - "9000:9000"
+    depends_on:
+      - lodestar
+      - redis-stack
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+
