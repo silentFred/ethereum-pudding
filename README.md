@@ -1,12 +1,12 @@
-# Pudding
+# Pudding 🍮
 
-Pudding is a proof of concept and learning exercise designed to download beacon states, generate proofs for finalized
-beacon states, and cache these proofs. The project leverages Rust, Docker Compose, and Redis to achieve its goals.
+Pudding is a proof of concept service to download beacon states, generate proofs and pre-emptively cache proofs for
+quick access. Pudding is build with Rust, Docker Compose, and Redis.
 
 ## Features
 
-- Download cryptographic proofs for finalized beacon states.
-- Pre-emptively download states, generate and cache proofs in the background.
+- Download cryptographic proofs for finalised beacon states.
+- Pre-emptively download finalised states, generate and cache proofs in the background.
 - Dockerized setup for easy deployment and testing.
 
 ## Prerequisites
@@ -23,6 +23,9 @@ To run the project locally, use Docker Compose:
 ```sh
 docker-compose up
 ```
+
+Note: it might take some time for lodestar to sync a finalised state and for pudding to then generate and cache the
+first proof. You can check the logs to see the progress.
 
 ### API Usage
 
