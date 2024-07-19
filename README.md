@@ -1,6 +1,6 @@
-# Pudding 🍮
+# Ethereum Pudding 🍮
 
-Pudding is a proof of concept service to download beacon states, generate proofs and pre-emptively cache proofs for
+Ethereum Pudding is a proof-of-concept service to download beacon states, generate proofs and pre-emptively cache proofs for
 quick access. Pudding is build with Rust, Docker Compose, and Redis.
 
 ## Features
